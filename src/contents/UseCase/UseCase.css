@@ -1,0 +1,32 @@
+.document-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  cursor: text;
+}
+
+.text-line {
+  height: 4px;
+  background-color: #f1f5f9; /* slate-100 */
+  border-radius: 2px;
+}
+
+.dark .text-line {
+  background-color: #334155; /* slate-700 */
+}
+
+.line-full { width: 100%; }
+.line-75 { width: 75%; }
+.line-85 { width: 85%; }
+
+.doc-footer {
+  margin-top: auto;
+  font-size: 10px;
+  font-family: monospace;
+  text-align: center;
+  opacity: 0.5;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

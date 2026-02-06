@@ -1,0 +1,41 @@
+.status-container {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.status-text {
+  font-size: 10px;
+  font-family: monospace;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loading-bar {
+  border: 2px solid var(--color-border-color);
+  padding: 4px;
+  background-color: white;
+  display: flex;
+  gap: 4px;
+  height: 40px;
+}
+
+.dark .loading-bar {
+  background-color: #1e293b;
+}
+
+.bar-segment {
+  flex: 1;
+  background-color: var(--color-pastel-blue);
+}
+
+/* 점점 흐려지는 효과 */
+.seg-1 { opacity: 0.9; }
+.seg-2 { opacity: 0.7; }
+.seg-3 { opacity: 0.5; }
+.seg-4 { opacity: 0.3; }
+.seg-5 { opacity: 0.1; }

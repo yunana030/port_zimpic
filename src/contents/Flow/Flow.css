@@ -1,0 +1,64 @@
+.flow-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.flow-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.flow-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.flow-icon-btn {
+  font-size: 25px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.flow-icon-btn.dim { opacity: 0.5; }
+
+/* Mermaid 차트가 그려질 캔버스 영역 */
+.flow-canvas {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px dashed var(--color-border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.dark .flow-canvas {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+.canvas-placeholder-icon {
+  font-size: 32px;
+  opacity: 0.2;
+  margin-bottom: 8px;
+}
+
+.canvas-label {
+  font-size: 10px;
+  font-family: monospace;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
