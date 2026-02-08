@@ -59,10 +59,13 @@ html, body {
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px); /* 배경 흐림 효과 강화 */
   padding: 20px;
+  width: 100vw;
+  height: 100vh;
 }
 
 .modal-window {
-  width: 100%;
+  width: 95vw;
+  max-width: 95vw;
   background: white;
   border-radius: 12px;
   overflow: hidden; /* 내부 컴포넌트가 삐져나오지 않게 */
@@ -84,3 +87,4 @@ html, body {
 .size-music { width: 1100px; height: 80vh; }
 .size-readme { width: 600px; height: 400px; }
 .size-default { width: 950px; height: 75vh; }
+.size-erd { width: 1100px; height: 90vh; }

@@ -1,32 +1,59 @@
-.document-container {
-  padding: 16px;
+.usecase-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  height: 100%;
-  cursor: text;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* 영역 밖으로 절대 안 나감 */
 }
 
+/* 줄 스타일 유지 */
 .text-line {
-  height: 4px;
-  background-color: #f1f5f9; /* slate-100 */
-  border-radius: 2px;
+  height: 8px;
+  background-color: #f1f5f9;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  flex-shrink: 0; /* 줄이 이미지 때문에 찌그러지지 않게 고정 */
 }
-
-.dark .text-line {
-  background-color: #334155; /* slate-700 */
-}
-
 .line-full { width: 100%; }
-.line-75 { width: 75%; }
 .line-85 { width: 85%; }
+.line-75 { width: 75%; }
+
+/* 이미지 프레임: 줄 아래 남은 공간에 꽉 맞춤 */
+.usecase-frame {
+  flex: 1; 
+  min-height: 0; /* ⭐ 핵심: 자식이 부모를 뚫고 커지는 걸 물리적으로 차단 */
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 이미지: 프레임보다 절대 커질 수 없게 설정 */
+.usecase-full-view {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 비율 유지하며 쏙 들어감 */
+  display: block;
+}
 
 .doc-footer {
-  margin-top: auto;
-  font-size: 10px;
-  font-family: monospace;
+  display: block;
   text-align: center;
-  opacity: 0.5;
+  font-size: 11px;
+  color: #cbd5e1;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  margin-top: auto; /* 하단에 고정 */
+  padding-top: 10px;
+  flex-shrink: 0;
+}
+
+.usecase-caption {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 5px;
+  flex-shrink: 0;
 }

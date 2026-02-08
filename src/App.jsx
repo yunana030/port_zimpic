@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import WindowFrame from './components/WindowFrame';
 import YutubePlayer from './contents/YoutubePlayer.jsx/YutubePlayer';
 import DevEnv from './contents/DevEnv/DevEnv';
@@ -11,28 +11,33 @@ import ServiceInfo from './contents/ServiceInfo/ServiceInfo';
 import Growth from './contents/Growth/Growth';
 import {useState} from 'react';
 import "./App.css";
+import Loading from './Loading';
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   // 어떤 모달이 열려있는지 저장 (null이면 닫힌 상태)
   const [openModal, setOpenModal] = React.useState(null);
   // 모달을 닫는 함수
   const closeModal = () => setOpenModal(null);
 
+  useEffect(() => {
+    // 2.5초 뒤에 로딩 화면을 끕니다 (실제 데이터 로딩이 끝나면 꺼지게 할 수도 있어요)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="main-wrapper bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-200">
       
-      {/* 1. 다크모드 제어 버튼 */}
-      <div className="fixed top-4 right-4 z-50">
-        <button 
-          className="bg-white dark:bg-slate-800 p-2 rounded-full border-2 border-border-color shadow-sm" 
-          onClick={() => document.documentElement.classList.toggle('dark')}
-        >
-          <span className="material-symbols-outlined block dark:hidden">dark_mode</span>
-          <span className="material-symbols-outlined hidden dark:block">light_mode</span>
-        </button>
-      </div>
-
       {/* 2. 메인 그리드 레이아웃 (9개 창) */}
       <div className="content-grid">
 
@@ -79,7 +84,7 @@ function App() {
         </div>
 
         {/* 7. Login (ERD) */}
-        <div onClick={() => setOpenModal('login')} className="lg:col-span-4 cursor-pointer">
+        <div onClick={() => setOpenModal('erd')} className="lg:col-span-4 cursor-pointer">
           <WindowFrame title="ERD" headerColor="bg-pastel-blue dark:bg-blue-900" height="h-44">
             <ERD />
           </WindowFrame>
@@ -111,6 +116,7 @@ function App() {
         <div className="modal-overlay" onClick={closeModal}>
           <div 
             className={`modal-window size-${
+              openModal === 'erd' ? 'erd' :
               openModal === 'chat' ? 'chat' :
               openModal === 'feed' ? 'feed' :
               openModal === 'music' ? 'music' :
@@ -126,7 +132,7 @@ function App() {
                 openModal === 'music' ? 'YuTube Player Full View' :
                 openModal === 'asset' ? 'Trouble Shooting Full View' :
                 openModal === 'readme' ? 'Use Case Full View' :
-                openModal === 'login' ? 'ERD Full View' :
+                openModal === 'erd' ? 'ERD Full View' :
                 openModal === 'loading' ? 'Service Info Full View' :
                 openModal === 'alert' ? 'Learing & Growth' : 'Full View'
               } 
@@ -140,7 +146,7 @@ function App() {
               {openModal === 'music' && <YutubePlayer isModal={true} />}
               {openModal === 'asset' && <TroubleShooting isModal={true} />}
               {openModal === 'readme' && <UseCase isModal={true} />}
-              {openModal === 'login' && <ERD isModal={true} />}
+              {openModal === 'erd' && <ERD isModal={true} />}
               {openModal === 'loading' && <ServiceInfo isModal={true} />}
               {openModal === 'alert' && <Growth isModal={true} />}
             </WindowFrame>
