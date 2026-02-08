@@ -57,7 +57,7 @@ function App() {
           
         {/* 3. Calendar (Flow) */}
         <div onClick={() => setOpenModal('calendar')} className="lg:col-span-5 cursor-pointer">
-          <WindowFrame title="System Flow" headerColor="bg-pastel-purple dark:bg-purple-900" height="h-[350px]" icon={<span className="material-symbols-outlined text-sm">calendar_month</span>}>
+          <WindowFrame title="Sequence and Architecture" headerColor="bg-pastel-purple dark:bg-purple-900" height="h-[350px]" icon={<span className="material-symbols-outlined text-sm">calendar_month</span>}>
             <Flow />
           </WindowFrame>
         </div>
@@ -128,7 +128,7 @@ function App() {
               title={
                 openModal === 'chat' ? 'Development Environment Full View' :
                 openModal === 'feed' ? 'Image Feed Full View' :
-                openModal === 'calendar' ? 'System Flow Full View' :
+                openModal === 'calendar' ? 'Sequence and Architecture Full View' :
                 openModal === 'music' ? 'YuTube Player Full View' :
                 openModal === 'asset' ? 'Trouble Shooting Full View' :
                 openModal === 'readme' ? 'Use Case Full View' :

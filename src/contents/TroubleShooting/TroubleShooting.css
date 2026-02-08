@@ -1,103 +1,119 @@
-.vault-container {
-  padding: 24px;
+.troubleRootContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.troubleCard {
+  width: 100%;
+  max-width: 1100px;
+  height: max-content;
+}
+
+.titleWrapper {
+  margin-bottom: 20px;
+}
+
+.simpleTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+}
+
+.troubleTable {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f0f4f8;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  margin-bottom: 40px;
 }
 
-.vault-top {
+.troubleRow {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  border-bottom: 1px solid #f0f4f8;
+  min-height: 250px;
 }
 
-.folder-icon-wrapper {
-  width: 64px;
-  height: 64px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid var(--color-border-color);
-  border-radius: 4px;
+.troubleTextSide {
+  flex: 1;
+  padding: 30px;
+  background: #fff;
+  line-height: 1.6;
+  color: #4A5568;
+}
+
+.troubleImageSide {
+  flex: 1;
+  padding: 20px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageLabel {
+  font-size: 0.85rem;
+  color: #a0aec0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.imageLabel.blue {
+  color: #72A3EF;
+}
+
+.imageWrapper {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 2px 0px 0px rgba(165, 165, 200, 0.4);
-}
-
-.dark .folder-icon-wrapper {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.version-tag {
-  font-size: 9px;
-  font-family: monospace;
-  opacity: 0.5;
-}
-
-.vault-info-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.vault-label {
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: -0.05em;
-}
-
-.log-preview-card {
-  height: 128px;
-  background-color: var(--color-pastel-purple);
-  border: 1px solid var(--color-border-color);
-  border-radius: 4px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   overflow: hidden;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
 }
 
-.dark .log-preview-card {
-  background-color: rgba(88, 28, 135, 0.5); /* purple-900/50 */
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* 가짜 텍스트 애니메이션 라인 */
-.log-line {
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 2px;
+.troubleTag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
-.log-line.pulse { animation: pulse 2s infinite; }
-.log-line.w-full { width: 100%; }
-.log-line.w-3-4 { width: 75%; }
-.log-line.w-1-2 { width: 50%; }
+.status { background: #fff5f5; color: #f56565; }
+.solve { background: #f0fff4; color: #48bb78; }
+.lesson { background: #ebf8ff; color: #4299e1; }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+.lessonRow {
+  background: #f8fafc;
 }
 
-.card-footer {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.fullWidth {
+  flex: none;
+  width: 100%;
 }
 
-.error-code {
-  font-size: 0.75rem;
-  font-family: monospace;
-  color: rgba(255, 255, 255, 0.7);
+@media (max-width: 768px) {
+  .troubleRow {
+    flex-direction: column;
+  }
+  .troubleImageSide {
+    min-height: 250px;
+  }
 }
-
-.download-icon {
-  font-size: 25px;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.download-icon:hover { color: white; }

@@ -1,64 +1,61 @@
 .flow-container {
-  padding: 16px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow: hidden;
+  background-color: #ffffff;
 }
 
 .flow-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f5f9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
-.flow-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: monospace;
-}
-
-.flow-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.flow-icon-btn {
-  font-size: 25px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.flow-icon-btn.dim { opacity: 0.5; }
-
-/* Mermaid 차트가 그려질 캔버스 영역 */
+/* ⭐ 여기가 핵심: 전체를 세로 스크롤로 만듦 */
 .flow-canvas {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 2px dashed var(--color-border-color);
+  overflow-y: auto; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; /* 이미지 사이의 넉넉한 간격 */
+  align-items: center;
+}
+
+.flow-item {
+  width: 100%;
+  max-width: 900px; /* 너무 넓어지면 보기 힘드니 최대폭 제한 */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flow-label {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #334155;
+  border-left: 4px solid #72A3EF;
+  padding-left: 10px;
+}
+
+.flow-img {
+  width: 100%;
+  height: auto; /* 세로 길이는 원본 비율에 맡김 */
+  display: block;
   border-radius: 8px;
+  /* border: 1px solid #e2e8f0; */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); */
+}
+
+.flow-footer {
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow: auto;
-}
-
-.dark .flow-canvas {
-  background-color: rgba(30, 41, 59, 0.5);
-}
-
-.canvas-placeholder-icon {
-  font-size: 32px;
-  opacity: 0.2;
-  margin-bottom: 8px;
-}
-
-.canvas-label {
-  font-size: 10px;
-  font-family: monospace;
-  opacity: 0.4;
-  text-transform: uppercase;
+  color: #cbd5e1;
+  gap: 10px;
 }
