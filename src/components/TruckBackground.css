@@ -20,27 +20,43 @@
   transform: scaleX(-1); 
 }
 
+.patrol-truck-wrapper {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  opacity: 0.25;
+  animation: patrol-route 25s linear infinite;
+  pointer-events: auto;
+  
+  /* ⭐ 회전 중심을 정중앙으로 잡아야 코너에서 안 사라집니다 */
+  transform-origin: center; 
+  /* 부드러운 회전을 위해 추가 */
+  transition: transform 0.3s ease-in-out; 
+}
+
 @keyframes patrol-route {
-  /* 1. 상단: 왼쪽에서 오른쪽으로 */
-  0% { top: 10px; left: -150px; transform: rotate(180deg); }
-  /* 끝 도달 시 160px 정도 안쪽으로 오게 설정 */
+  /* 0% ~ 20%: 상단 주행 */
+  0% { top: 10px; left: 10px; transform: rotate(180deg); } 
   20% { top: 10px; left: calc(100% - 160px); transform: rotate(180deg); }
   
-  22% { transform: rotate(270deg); }
+  /* ⭐ 우측 상단 꺾기: 위치(top, left)를 고정하고 각도만 변경 */
+  22% { top: 10px; left: calc(100% - 160px); transform: rotate(270deg); }
 
-  /* 2. 우측: 위에서 아래로 */
-  /* 바닥 도달 시에도 160px 정도 위로 오게 설정 */
+  /* 25% ~ 45%: 우측 주행 */
   45% { top: calc(100% - 140px); left: calc(100% - 160px); transform: rotate(270deg); }
 
-  47% { transform: rotate(360deg); }
+  /* ⭐ 우측 하단 꺾기: 위치 고정하고 각도 변경 */
+  47% { top: calc(100% - 140px); left: calc(100% - 160px); transform: rotate(360deg); }
 
-  /* 3. 하단: 오른쪽에서 왼쪽으로 */
+  /* 50% ~ 70%: 하단 주행 */
   70% { top: calc(100% - 140px); left: 10px; transform: rotate(360deg); }
 
-  72% { transform: rotate(450deg); }
+  /* ⭐ 좌측 하단 꺾기: 위치 고정하고 각도 변경 */
+  72% { top: calc(100% - 140px); left: 10px; transform: rotate(450deg); }
 
-  /* 4. 좌측: 아래에서 위로 */
+  /* 75% ~ 95%: 좌측 주행 */
   95% { top: 10px; left: 10px; transform: rotate(450deg); }
   
-  100% { top: 10px; left: -150px; transform: rotate(540deg); }
+  /* ⭐ 좌측 상단 복귀: 마지막 꺾기 */
+  100% { top: 10px; left: 10px; transform: rotate(540deg); }
 }
