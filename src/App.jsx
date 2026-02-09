@@ -12,7 +12,7 @@ import Growth from './contents/Growth/Growth';
 import {useState} from 'react';
 import "./App.css";
 import Loading from './Loading';
-
+import TruckBackground from './components/TruckBackground';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,13 +37,19 @@ function App() {
 
   return (
     <div className="main-wrapper bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-200">
-      
+      <TruckBackground />
+
+      <div className="system-guide-bar">
+        <span className="material-symbols-outlined">info</span>
+        <p>창 바깥 영역을 클릭하거나 우측 상단 X 버튼을 누르면 이전 화면으로 돌아갑니다.</p>
+      </div>
+
       {/* 2. 메인 그리드 레이아웃 (9개 창) */}
       <div className="content-grid">
 
         {/* 1. Chat */}
         <div onClick={() => setOpenModal('chat')} className="lg:col-span-3 cursor-pointer">
-          <WindowFrame title="DevelopmenT Environment" headerColor="bg-pastel-blue dark:bg-blue-900" height="h-[350px]">
+          <WindowFrame title="Development Environment" headerColor="bg-pastel-blue dark:bg-blue-900" height="h-[350px]">
             <DevEnv />
           </WindowFrame>
         </div>

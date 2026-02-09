@@ -17,7 +17,7 @@ const ERD = () => {
           </div>
         </a>
       </div>
-      <p className="erd-caption">Database Architecture : MySQL (Click to zoom)</p>
+      <p className="erd-caption">Database Architecture : MySQL (이미지를 클릭하면 더 크게 볼 수 있습니다.)</p>
     </div>
   );
 };
