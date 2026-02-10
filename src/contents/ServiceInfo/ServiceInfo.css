@@ -1,51 +1,76 @@
+/* 전체 배경을 아주 연한 회색으로 변경해 카드 레이아웃 부각 */
 .service-info-container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 40px 24px;
   box-sizing: border-box;
-  background-color: #ffffff;
-  gap: 20px;
-  overflow-y: auto; /* 내용이 많아지면 스크롤 허용 */
+  background-color: #f8fafc; 
+  gap: 30px;
+  overflow-y: auto;
 }
 
-/* 이미지 영역을 상단에 배치 */
-.ppt-preview-area {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  flex-shrink: 0; /* 이미지 크기 유지 */
-}
-
-.ppt-thumbnail {
-  max-width: 90%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f1f5f9;
-}
-
+/* 텍스트 영역을 깔끔한 카드로 감싸기 */
 .info-section {
-  flex-shrink: 0;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eef2f6;
 }
 
+/* 제목 강조: 왼쪽 포인트 바 추가 */
 .section-label {
-  font-size: 1.5rem;
-  color: #72A3EF;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 1.4rem;
+  color: #1e293b;
+  font-weight: 800;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.section-label::before {
+  content: "";
+  width: 4px;
+  height: 20px;
+  background-color: #72A3EF;
+  border-radius: 2px;
+}
+
+/* 멘트 유지 (줄간격과 가독성만 개선) */
 .section-desc {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.8;
   color: #475569;
+  word-break: keep-all; /* 한글 단어 깨짐 방지 */
 }
 
-/* 로딩바는 항상 최하단 고정 */
-.status-container {
-  margin-top: auto; 
-  padding-top: 15px;
+/* PPT 캡처 이미지 박스 */
+.policy-item {
+  margin: 15px 0 30px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.policy-full-img {
+  width: 100%;
+  display: block;
+}
+
+/* 데이터 전처리 항목 강조 스타일 */
+.data-point {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.data-point span {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #334155;
 }

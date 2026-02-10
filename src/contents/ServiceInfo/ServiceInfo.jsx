@@ -13,12 +13,12 @@ import used from "../../assets/images/model_used.png"
 const ServiceInfo = () => {
   return (
     <div className="service-info-container">
-      {/* 1. 이미지를 가장 위로 올림 (모달 밖에서 먼저 보이도록) */}
+      {/* 1. 상단 메인 이미지 */}
       <div className="ppt-preview-area">
         <img src={servicePpt} alt="Service PPT" className="ppt-thumbnail" />
       </div>
 
-      {/* 2. 텍스트 섹션들 */}
+      {/* 2. 텍스트 섹션 (원문 유지) */}
       <div className="info-section">
         <h3 className="section-label">Project Concept</h3>
         <p className="section-desc">
@@ -31,48 +31,36 @@ const ServiceInfo = () => {
       <div className="info-section">
         <h3 className="section-label">Mission</h3>
         <p className="section-desc">
-          데이터의 시각화와 직관적인 인터페이스를 통해 누구나 쉽게 이용할 수  있도록 만드는 것이 목표입니다.
+          데이터의 시각화와 직관적인 인터페이스를 통해 누구나 쉽게 이용할 수 있도록 만드는 것이 목표입니다.
         </p>
       </div>
       
+      {/* 3. 이미지 및 기술 설명 섹션 */}
       <div className="info-section">
         <h3 className="section-label">정책기준 정의</h3>
-
-      <div className="policy-column">
-        <div className="policy-item">
-          <img src={기준1} alt="Policy 1" className="policy-full-img" />
-        </div>
-        <div className="policy-item">
-          <img src={기준2} alt="Policy 2" className="policy-full-img" />
-        </div>
-
+        <div className="policy-item"><img src={기준1} alt="Policy 1" className="policy-full-img" /></div>
+        <div className="policy-item"><img src={기준2} alt="Policy 2" className="policy-full-img" /></div>
 
         <h3 className="section-label">모델 선정</h3>
-        <div className="policy-item">
-          <img src={used} alt="Policy 2" className="policy-full-img" />
-        </div>
-
+        <div className="policy-item"><img src={used} alt="Model Used" className="policy-full-img" /></div>
 
         <h3 className="section-label">데이터 전처리</h3>
-        <div className="policy-item">
-          <img src={data} alt="Policy 2" className="policy-full-img" />
+        <div className="policy-item"><img src={data} alt="Dataset" className="policy-full-img" /></div>
+        
+        <div className="data-point">
+          <p className="section-desc">
+            Owlv2 자동 라벨링을 통해 초기 데이터를 확보하고, <strong>Label Studio</strong>를 활용하여 정제 단계를 거쳤습니다.
+          </p>
+          <ul style={{ marginTop: '10px', paddingLeft: '20px', color: '#475569' }}>
+            <li><strong>False Negative 제거:</strong> 객체가 없는 위치에 라벨링된 오탐지 제거</li>
+            <li><strong>False Positive 확인:</strong> 객체가 있음에도 인식되지 않은 누락 확인</li>
+            <li><strong>MisLabel 수정:</strong> 잘못 라벨링된 클래스 수정 (예: 침대 → 소파)</li>
+          </ul>
         </div>
-        <p className="section-desc">
-          Owlv2 자동 라벨링을 통해 초기 데이터 확보<br />
-          정제단계에서 <strong>Label Studio</strong>사용<br />
-          False Negative 제거(오탐지, 객체가 없는 위치임에도 불구하고 라벨링된 경우)<br />
-          False Positive 확인(누락, 객체가 있음에도 인식되지 않은 경우)<br />
-          MisLavel 수정(잘못 라벨링된 클래스 수정, 침대를 소파로 라벨링한 경우)
-        </p>
 
-
-        <h3 className="section-label">YOLO Model Description</h3>
-        <div className="policy-item">
-          <img src={model} alt="Policy 2" className="policy-full-img" />
-        </div>
+        <h3 className="section-label" style={{marginTop: '40px'}}>YOLO Model Description</h3>
+        <div className="policy-item"><img src={model} alt="YOLO Model" className="policy-full-img" /></div>
       </div>
-    </div>
-
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 import './YutubePlayer.css';
+// https://www.youtube.com/watch?si=x_QxF0_DUo2rX6ow&v=mtyF1Sjbees&feature=youtu.be
 
 const YutubePlayer = () => {
   // 1. 나중에 여기 ID만 바꾸면 썸네일과 링크가 자동으로 바뀝니다!
-  const videoId = "h6mX-WjW9sc"; 
+  const videoId = "mtyF1Sjbees"; 
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const thumbnailUtl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-
   return (
     <div className="player-container">
       {/* 📸 썸네일 영역 (클릭 시 유튜브 이동) */}

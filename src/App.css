@@ -83,7 +83,7 @@ html, body {
 /* 3. 모달 크기 재설정 (조금 더 넉넉하게) */
 .size-chat { width: 600px; height: 750px; }
 .size-feed { width: 850px; height: 85vh; }
-.size-music { width: 1100px; height: 80vh; }
+.size-music { width: 1100px; height: 50vh; }
 .size-readme { width: 600px; height: 400px; }
 .size-default { width: 950px; height: 75vh; }
 .size-erd { width: 1100px; height: 90vh; }

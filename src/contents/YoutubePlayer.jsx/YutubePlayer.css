@@ -1,32 +1,41 @@
 /* 컨테이너 레이아웃 */
 .player-container {
-  padding: 24px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   align-items: center;
-  height: 100%;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid #f1f5f9;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 @media (min-width: 768px) {
   .player-container {
     flex-direction: row;
+    padding: 60px;
   }
 }
 
 /* 비디오 화면 영역 */
 .video-screen {
+  flex: 1.2;
   width: 100%;
-  height: 256px;
-  background-color: #1e293b; /* slate-800 */
-  border: 2px solid var(--color-border-color);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.video-screen:hover {
+  transform: translateY(-5px); 
 }
 
 @media (min-width: 768px) {
@@ -55,17 +64,30 @@
 
 /* 프로그레스 바 */
 .progress-bar-bg {
-  height: 12px;
-  background-color: #e2e8f0; /* slate-200 */
-  border-radius: 9999px;
-  border: 1px solid var(--color-border-color);
-  overflow: hidden;
+  height: 6px;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .progress-bar-fill {
-  background-color: var(--color-pastel-blue);
+  background: linear-gradient(90deg, #72A3EF, #2563eb); /* 그라데이션 적용 */
   height: 100%;
-  width: 15%;
+  width: 35%;
+  border-radius: 10px;
+  position: relative;
+}
+/* 프로그레스 바 끝에 작은 점(Knob) 추가 */
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -3px;
+  width: 12px;
+  height: 12px;
+  background: #2563eb;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
 }
 
 /* 조작 버튼들 */
@@ -93,4 +115,55 @@
 
 .play-button:active {
   transform: scale(0.95);
+}
+
+/* 1. 이미지 자체가 박스에 꽉 차도록 설정 */
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+/* 2. 비디오 화면 영역 (기존 코드 유지 및 보완) */
+.video-screen {
+  width: 100%;
+  height: 256px;
+  background-color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;        /* 이미지가 넘치지 않게 깎아줌 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.video-screen:hover .thumb-img {
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .video-screen {
+    width: 65%; 
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+/* 3. 재생 버튼 오버레이 (이미지 위에 중앙 배치) */
+.overlay-play {
+  position: absolute;
+  top: 42%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  pointer-events: none;
+}
+
+.play-icon-main {
+  font-size: 64px !important;
+  color: white;
+  opacity: 0.9;
 }
