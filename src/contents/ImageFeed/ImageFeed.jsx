@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './ImageFeed.css'; // 작성하신 CSS를 여기서 불러옵니다.
 
 // 이미지들을 import 하거나 배열로 만듭니다.
-import img1 from "../../assets/images/케로로.jpg";
-import img2 from "../../assets/images/기로로.jpg";
-import img3 from "../../assets/images/타마마.jpg";
-import img4 from "../../assets/images/원룸.jpg";
+import img1 from "../../assets/images/1_main.png";
+import img2 from "../../assets/images/2_modal.png";
+import img3 from "../../assets/images/3_step1.png";
+import img4 from "../../assets/images/4_step2.png";
+import img5 from "../../assets/images/5_step3.png";
+import img6 from "../../assets/images/6_step4.png";
+
 
 const ImageFeed = () => {
-  const images = [img1, img2, img3, img4];
+  const images = [img1, img2, img3, img4, img5, img6];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrev = () => {
@@ -52,7 +55,7 @@ const ImageFeed = () => {
         </p>
 
         <div className="hash-tags">
-          #YOLO #LabelStudio #Django #MySQL #React
+          #YOLO #LabelStudio #Django #MySQL #React #페이지캡처가 #미흡해요 #유튜브 #영상으로 #확인부탁드립니다
         </div>
       </div>
     </div>

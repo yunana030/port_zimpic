@@ -1,62 +1,124 @@
+/* 컨테이너: 전체 화면 기준 */
 .truck-patrol-container {
   position: fixed;
   inset: 0;
-  z-index: 0;
-  pointer-events: none;
+  z-index: 9999; /* 다른 요소보다 앞에 오도록 높은 숫자 부여 */
+  pointer-events: none; /* 컨테이너 자체는 클릭 무시 */
 }
 
+/* 움직이는 트럭 박스 */
 .patrol-truck-wrapper {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: auto;
-  opacity: 0.25;
+  opacity: 0.85;
   animation: patrol-route 25s linear infinite;
+  pointer-events: auto; /* 트럭 영역은 클릭 가능하게 */
+  cursor: pointer;
+  z-index: 10000;
 }
 
 .patrol-truck-img {
   width: 100%;
   height: auto;
-  /* ⭐ 이미지를 좌우 반전시켜서 머리 방향을 앞으로 돌립니다 */
   transform: scaleX(-1); 
+}
+
+.patrol-truck-wrapper:hover {
+  animation-play-state: paused;
 }
 
 .patrol-truck-wrapper {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: auto;
-  opacity: 0.25;
+  opacity: 0.85;
   animation: patrol-route 25s linear infinite;
   pointer-events: auto;
-  
-  /* ⭐ 회전 중심을 정중앙으로 잡아야 코너에서 안 사라집니다 */
   transform-origin: center; 
   /* 부드러운 회전을 위해 추가 */
   transition: transform 0.3s ease-in-out; 
+  z-index:999;
 }
 
 @keyframes patrol-route {
-  /* 0% ~ 20%: 상단 주행 */
-  0% { top: 10px; left: 10px; transform: rotate(180deg); } 
-  20% { top: 10px; left: calc(100% - 160px); transform: rotate(180deg); }
+  /* 0%: 시작 위치 (좌측 상단) */
+  0% { top: 10px; left: 0px; transform: rotate(180deg); } /* 10px -> 0px */
   
-  /* ⭐ 우측 상단 꺾기: 위치(top, left)를 고정하고 각도만 변경 */
+  20% { top: 10px; left: calc(100% - 160px); transform: rotate(180deg); }
   22% { top: 10px; left: calc(100% - 160px); transform: rotate(270deg); }
 
-  /* 25% ~ 45%: 우측 주행 */
   45% { top: calc(100% - 140px); left: calc(100% - 160px); transform: rotate(270deg); }
-
-  /* ⭐ 우측 하단 꺾기: 위치 고정하고 각도 변경 */
   47% { top: calc(100% - 140px); left: calc(100% - 160px); transform: rotate(360deg); }
 
-  /* 50% ~ 70%: 하단 주행 */
-  70% { top: calc(100% - 140px); left: 10px; transform: rotate(360deg); }
+  /* 50% ~ 70%: 하단 주행 끝지점 (좌측 하단 도달) */
+  70% { top: calc(100% - 140px); left: 0px; transform: rotate(360deg); } /* 10px -> 0px */
 
-  /* ⭐ 좌측 하단 꺾기: 위치 고정하고 각도 변경 */
-  72% { top: calc(100% - 140px); left: 10px; transform: rotate(450deg); }
+  /* 72%: 좌측 하단 꺾기 */
+  72% { top: calc(100% - 140px); left: 0px; transform: rotate(450deg); } /* 10px -> 0px */
 
-  /* 75% ~ 95%: 좌측 주행 */
-  95% { top: 10px; left: 10px; transform: rotate(450deg); }
+  /* 75% ~ 95%: 좌측 세로 라인 주행 */
+  95% { top: 0px; left: -10px; transform: rotate(450deg); } /* top 5px, left 5px -> 0px */
   
-  /* ⭐ 좌측 상단 복귀: 마지막 꺾기 */
-  100% { top: 10px; left: 10px; transform: rotate(540deg); }
+  /* 100%: 복귀 */
+  100% { top: 10px; left: 0px; transform: rotate(540deg); } /* 10px -> 0px */
+}
+/* 트럭을 감싸는 링크 영역 */
+.truck-link {
+  position: relative;
+  display: block;
+}
+
+/* 🤍 흰색 말풍선 디자인 (클래스명 유지) */
+.truck-tooltip {
+  position: absolute;
+  top: -55px; /* 트럭 위쪽으로 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background-color: #ffffff; /* 흰색 배경 */
+  color: #222222; /* 글자색 */
+  padding: 8px 16px;
+  border-radius: 50px; /* 둥근 말풍선 */
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  
+  /* 그림자와 테두리 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+
+  /* 애니메이션 설정 */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* 🔻 아래쪽 세모 화살표 */
+.truck-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -9px; /* 말풍선 바로 아래 */
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #ffffff; /* 말풍선 색상과 통일 */
+}
+
+/* 🖱️ 마우스 올렸을 때 효과 */
+.patrol-truck-wrapper:hover {
+  animation-play-state: paused; /* 트럭 정지 */
+}
+
+.patrol-truck-wrapper:hover .truck-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-10px); /* 위로 슥 올라오는 효과 */
+}
+
+/* 마우스 커서 */
+.patrol-truck-wrapper {
+  cursor: pointer;
 }
