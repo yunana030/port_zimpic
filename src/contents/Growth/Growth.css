@@ -1,44 +1,92 @@
-.alert-container {
-  padding: 16px;
+.growth-container {
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
+  gap: 25px;
   height: 100%;
+  overflow-y: auto;
+  text-align: left;
+}
+
+/* 상단 Optimization 영역 복구 */
+.growth-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(var(--color-pastel-blue-rgb), 0.05);
+  border-radius: 10px;
 }
 
 .alert-icon-circle {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: 2px solid var(--color-pastel-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-pastel-blue);
+  flex-shrink: 0;
 }
+
+.header-text { flex: 1; }
 
 .alert-msg {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
-.log-btn {
-  background-color: white;
-  border: 2px solid var(--color-border-color);
-  padding: 4px 16px;
-  font-size: 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.growth-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
 }
 
-.dark .log-btn {
-  background-color: #1e293b;
+.growth-bar-fill {
+  width: 99%;
+  height: 100%;
+  background: var(--color-pastel-blue);
+  border-radius: 4px;
 }
 
-.log-btn:hover {
-  background-color: var(--color-pastel-blue);
+/* 본문 스타일 */
+.section-title {
+  font-size: 20px;
+  color: var(--color-pastel-blue);
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.sub-title {
+  display: block;
+  font-size: 15px;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 5px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.text-block p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 10px;
+  word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 */
+}
+
+.future-list {
+  list-style: none;
+  padding: 0;
+}
+
+.future-list li {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  color: #475569;
 }
